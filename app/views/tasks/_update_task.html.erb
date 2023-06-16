@@ -1,0 +1,35 @@
+
+
+    <li id="<%= dom_id(task) %>" class="list-group-item"><%= task.content %>
+    <br />
+    <%= form_with model: Task.where(id: task.id).first, style: "display:inline-block; width:30%;", method: "PATCH", local: false do |task_form| %>
+
+    <div class="field" style="display: inline">
+  <% if task.status == "not yet started" %>
+      <%= task_form.hidden_field :status, value: "in progress", name: "task[status]" %>
+  <% elsif task.status == "in_progress" %>
+      <%= task_form.hidden_field :status, value: "completed", name: "task[status]" %>
+  <% elsif task.status == "completed" %>
+      <%= task_form.hidden_field :status, value: "in progress", name: "task[status]" %>
+  <% end %>
+    </div>
+
+    <div class="field" style="display: inline">
+      <%= task_form.hidden_field :content, value: task.content,class: "form-control", name: "task[content]" %>
+    </div>
+
+    <div class="actions" style="display: inline">
+      <%= button_tag type: "submit", class: "btn btn-link", id: "send-btn", style: "display:inline-block; width:30%;" do %>
+         <% if task.status == "not_yet_started" %>
+          <i class="fa-solid fa-play"></i>
+        <% elsif task.status == "in_progress" %>
+        <i class="fa-regular fa-circle-check"></i>
+        <% elsif task.status == "completed" %>
+         <i class="fa-solid fa-backward"></i>
+         <% end %>
+      <% end %>
+    </div>
+<% end %>
+    <%= link_to edit_task_path(task.id), style: "display:inline-block; width: 30%; text-align:center;" do %><i class="fa-solid fa-pen-to-square"></i><% end %>
+    <%= link_to task_path(task.id), method: "DELETE", style: "display:inline-block; width: 30%; text-align:center;", remote: true do %><i class="fa-solid fa-trash"></i><% end %>
+    </li>

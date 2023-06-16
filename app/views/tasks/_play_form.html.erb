@@ -1,0 +1,18 @@
+<%= form_with model: @task, method: "PATCH", style: "display:inline-block; width:30%;" do |task_form| %>
+
+
+  <div class="field" style="display: inline">
+
+    <%= task_form.hidden_field :status, value: "in progress", name: "task[status]" %>
+  </div>
+
+  <div class="field" style="display: inline">
+    <%= task_form.text_field :content, class: "form-control", name: "task[content]" %>
+  </div>
+
+<div class="actions" style="display: inline">
+    <%= button_tag type: "submit", class: "btn btn-link", id: "send-btn", style: "display:inline-block; width:30%;" do %>
+    <i class="fa-solid fa-play"></i>
+  <% end %>
+  </div>
+<% end %>

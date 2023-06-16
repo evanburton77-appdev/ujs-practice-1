@@ -1,0 +1,18 @@
+<%= form_with model: @task do |task_form| %>
+
+
+  <div class="field">
+
+    <%= task_form.hidden_field :status, value: "in progress", name: "task[status]" %>
+  </div>
+
+  <div class="field">
+    <%= task_form.hidden_field :content, class: "form-control", name: "task[content]" %>
+  </div>
+
+<div class="actions">
+    <%= button_tag type: "submit", class: "btn btn-link", id: "send-btn", style: "display:inline-block; width:30%;" do %>
+    <i class="fa-solid fa-backward"></i>
+  <% end %>
+  </div>
+<% end %>

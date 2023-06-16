@@ -1,0 +1,16 @@
+<%= form_with model: @task, local: false do |task_form| %>
+
+
+  <div class="field">
+
+    <%= task_form.hidden_field :status, value: "not yet started", name: "task[status]" %>
+  </div>
+
+  <div class="field">
+    <%= task_form.text_field :content, class: "form-control", name: "task[content]" %>
+  </div>
+
+<div class="d-grid gap-2">
+    <%= task_form.submit "Create Task", class:"btn btn-primary" %>
+  </div>
+<% end %>

@@ -1,0 +1,23 @@
+
+    <li id="<%= dom_id(task) %>" class="list-group-item"><%= task.content %>
+    <br />
+    <%= form_with model: Task.where(id: task.id).first, style: "display:inline-block; width:30%;", method: "PATCH", local: false do |task_form| %>
+
+    <div class="field" style="display: inline">
+
+      <%= task_form.hidden_field :status, value: "in progress", name: "task[status]" %>
+    </div>
+
+    <div class="field" style="display: inline">
+      <%= task_form.hidden_field :content, value: task.content,class: "form-control", name: "task[content]" %>
+    </div>
+
+    <div class="actions" style="display: inline">
+      <%= button_tag type: "submit", class: "btn btn-link", id: "send-btn", style: "display:inline-block; width:30%;" do %>
+        <i class="fa-solid fa-play"></i>
+      <% end %>
+    </div>
+<% end %>
+    <%= link_to edit_task_path(task.id), style: "display:inline-block; width: 10%; text-align:center;" do %><i class="fa-solid fa-pen-to-square"></i><% end %>
+    <%= link_to task_path(task.id), method: "DELETE", style: "display:inline-block; width: 10%; text-align:center;", remote: true do %><i class="fa-solid fa-trash"></i><% end %>
+    </li>
