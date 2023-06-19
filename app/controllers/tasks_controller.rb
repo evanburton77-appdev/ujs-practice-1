@@ -17,6 +17,13 @@ class TasksController < ApplicationController
 
   # GET /tasks/1/edit
   def edit
+
+    respond_to do |format|
+      format.html { redirect_to tasks_path }
+      format.json { render :show, status: :created, location: @task }
+      format.js
+    end
+
   end
 
   # POST /tasks or /tasks.json

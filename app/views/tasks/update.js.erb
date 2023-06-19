@@ -1,10 +1,10 @@
 var updated_task = $("<%= escape_javascript(render 'tasks/update_task', task: @task) %>");
 $("#<%= dom_id(@task) %>").remove();
-<% if @task.status == "not yet started" %>
-  <% if Task.where(status: "not yet started").order({ :updated_at => :desc }).first.id.present? %>
-$("#task_<%= Task.where(status: "not yet started").order({ :updated_at => :desc }).first.id %>").after(updated_task);
+<% if @task.status == "not_yet_started" %>
+  <% if Task.where(status: "not_yet_started").order({ :updated_at => :desc })[1].id.present? %>
+$("#task_<%= Task.where(status: "not_yet_started").order({ :updated_at => :desc })[1].id %>").after(updated_task);
   <% else %>
-  $("#in-progress").after(updated_task);
+  $("#not-yet-started").after(updated_task);
   <% end %>
   updated_task.slideDown();
 <% elsif @task.status == "in_progress" %>

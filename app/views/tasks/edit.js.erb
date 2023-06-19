@@ -1,0 +1,2 @@
+var edit_task = $("<%= escape_javascript(render 'tasks/edit_form', task: @task) %>");
+$("#<%= dom_id(@task) %>").replaceWith(edit_task);
