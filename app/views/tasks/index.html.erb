@@ -2,7 +2,9 @@
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 
 
-
+<div class="row">
+  <div class="col-md-4">
+   <div class="d-grid gap-2">
 <div class="card" style="width: 18rem; display: flex; float: left;">
   <div id="not-yet-started" class="card-header">
     Not yet started
@@ -31,14 +33,19 @@
   </div>
 <% end %>
 
-   <%= link_to edit_task_path(task.id), style: "display:inline-block; width:10%; text-align:center;", remote: true do %><i class="fa-solid fa-pen-to-square"></i><% end %> 
-   <%= link_to task_path(task.id), method: "DELETE", style: "display:inline-block; width:10%; text-align:center;", remote: true do %><i class="fa-solid fa-trash"></i><% end %>
+   <%= link_to edit_task_path(task.id), style: "display:inline-block; width:30%; text-align:center;", remote: true do %><i class="fa-solid fa-pen-to-square"></i><% end %> 
+   <%= link_to task_path(task.id), method: "DELETE", style: "display:inline-block; width:30%; text-align:center;", remote: true do %><i class="fa-solid fa-trash"></i><% end %>
    </li>
    
   <% end %>
   </ul>
 </div>
+</div>
+</div>
 
+
+<div class="col-md-4">
+ <div class="d-grid gap-2">
 <div class="card" style="width: 18rem; display: flex; float: left;">
   <div class="card-header">
     In progress
@@ -75,6 +82,11 @@
   </ul>
 </div>
 
+</div>
+</div>
+
+<div class="col-md-4">
+ <div class="d-grid gap-2">
 <div class="card" style="width: 18rem; display: flex; float: left;">
   <div class="card-header">
     Completed
@@ -103,9 +115,14 @@
   </div>
 <% end %>
    <%= link_to edit_task_path(task.id), style: "display:inline-block; width:30%; text-align:center;", remote: true do %><i class="fa-solid fa-pen-to-square"></i><% end %> 
+
+
    <%= link_to task_path(task.id), method: "DELETE", style: "display:inline-block; width:30%; text-align:center;", remote: true  do %><i class="fa-solid fa-trash"></i><% end %>
    </li>
    
   <% end %>
   </ul>
+</div>
+</div>
+</div>
 </div>
