@@ -14,6 +14,10 @@
     <% Task.where(status: "not yet started").each do |task| %>
     <li id="<%= dom_id(task) %>" class="list-group-item"><%= task.content %> 
     <br />
+
+  <div class="container">
+    <div class="row">
+      <div class="col">
  <%= form_with model: Task.where(id: task.id).first, style: "display:inline-block; width:30%;", method: "PATCH", local: false do |task_form| %>
 
 
@@ -32,9 +36,15 @@
   <% end %>
   </div>
 <% end %>
-
+    </div>
+    <div class="col">
    <%= link_to edit_task_path(task.id), style: "display:inline-block; width:30%; text-align:center;", remote: true do %><i class="fa-solid fa-pen-to-square"></i><% end %> 
+    </div>
+    <div class="col">
    <%= link_to task_path(task.id), method: "DELETE", style: "display:inline-block; width:30%; text-align:center;", remote: true do %><i class="fa-solid fa-trash"></i><% end %>
+    </div>
+    </div>
+    </div>
    </li>
    
   <% end %>
@@ -55,6 +65,9 @@
      <% Task.where(status: "in progress").each do |task| %>
     <li id="<%= dom_id(task) %>" class="list-group-item"><%= task.content %> 
     <br />
+<div class="container">
+  <div class="row">
+    <div class="col">
 <%= form_with model: Task.where(id: task.id).first, style: "display:inline-block; width:30%;", method: "PATCH", local: false do |task_form| %>
 
 
@@ -73,9 +86,16 @@
   <% end %>
   </div>
 <% end %>
+    </div>
+    <div class="col">
     <%= link_to edit_task_path(task.id), style: "display:inline-block; width:30%; text-align:center;", remote: true do %><i class="fa-solid fa-pen-to-square"></i><% end %>
+    </div>
+    <div class="col">
   
    <%= link_to task_path(task.id), method: "DELETE", style: "display:inline-block; width:30%; text-align:center;", remote: true  do %><i class="fa-solid fa-trash"></i><% end %>
+   </div>
+   </div>
+   </div>
    </li>
    
   <% end %>
@@ -96,6 +116,10 @@
      <% Task.where(status: "completed").each do |task| %>
     <li id="<%= dom_id(task) %>" class="list-group-item"><%= task.content %> 
     <br />
+
+<div class="container">
+  <div class="row">
+    <div class="col">
 <%= form_with model: Task.where(id: task.id).first, style: "display:inline-block; width:30%;", method: "PATCH", local: false do |task_form| %>
 
 
@@ -114,10 +138,16 @@
   <% end %>
   </div>
 <% end %>
+    </div>
+    <div class="col">
    <%= link_to edit_task_path(task.id), style: "display:inline-block; width:30%; text-align:center;", remote: true do %><i class="fa-solid fa-pen-to-square"></i><% end %> 
-
+    </div>
+    <div class="col">
 
    <%= link_to task_path(task.id), method: "DELETE", style: "display:inline-block; width:30%; text-align:center;", remote: true  do %><i class="fa-solid fa-trash"></i><% end %>
+   </div>
+   </div>
+   </div>
    </li>
    
   <% end %>
